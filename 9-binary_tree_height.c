@@ -11,14 +11,16 @@
  *
  * Return: Nothing
  */
-void height_checker(const binary_tree_t *node, size_t *height)
+void height_checker(const binary_tree_t *node, size_t *height_l, size_t *height_r)
 {
 	if (!node)
 		return;
-	if ((node->left || node->right) && node->parent)
-		(*height)++;
-	height_checker(node->left, height);
-	height_checker(node->right, height);
+	height_checker(node->left, height_l, height_r);
+	if (node->left && node->parent)
+		(*height_l)++;
+	height_checker(node->right, height_l, height_r);
+	if (node->right && node->parent)
+		(*height_r)++;
 }
 
 /**
@@ -32,9 +34,10 @@ void height_checker(const binary_tree_t *node, size_t *height)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t height = 0;
+	size_t height_l = 0;
+	size_t height_r = 0;
 
-	height_checker(tree, &height);
+	height_checker(tree, &height_l, &height_r);
 
-	return (height);
+	return (height_l > height_r ? height_l : height_r);
 }
