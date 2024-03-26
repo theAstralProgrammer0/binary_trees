@@ -17,7 +17,8 @@ void height_checker_left(const binary_tree_t *node, size_t *h)
 		return;
 
 	(*h)++;
-	height_checker_left(node->left, h);
+	if (node->left)
+		height_checker_left(node->left, h);
 }
 
 void height_checker_right(const binary_tree_t *node, size_t *h)
@@ -26,7 +27,8 @@ void height_checker_right(const binary_tree_t *node, size_t *h)
 		return;
 
 	(*h)++;
-	height_checker_right(node->right, h);
+	if (node->right)
+		height_checker_right(node->right, h);
 }
 
 
