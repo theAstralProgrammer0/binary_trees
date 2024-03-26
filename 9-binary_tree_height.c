@@ -36,6 +36,5 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 	height_checker(tree, &height);
 
-	
 	return (height);
 }
