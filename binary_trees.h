@@ -32,7 +32,7 @@ void in_traverse(const binary_tree_t *node, void (*func)(int));
 /* binary tree post-order traversal recursor */
 void post_traverse(const binary_tree_t *node, void (*func)(int));
 /* height checker */
-void height_checker(const binary_tree_t *node, size_t *);
+size_t height_checker(const binary_tree_t *node, size_t *);
 /* depth checker */
 void depth_checker(const binary_tree_t *node, size_t *depth);
 
