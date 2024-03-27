@@ -6,7 +6,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	binary_tree_t *first_friend = (binary_tree_t *)first;
 	binary_tree_t *second_friend = (binary_tree_t *)second;
 
-	if (!first->parent || !second->parent)
+	if (!first || !second || !first->parent || !second->parent)
 		return (NULL);
 	if (first->parent == second)
 		return (second_friend);
