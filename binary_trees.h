@@ -31,6 +31,8 @@ void pre_traverse(const binary_tree_t *node, void (*func)(int));
 void in_traverse(const binary_tree_t *node, void (*func)(int));
 /* binary tree post-order traversal recursor */
 void post_traverse(const binary_tree_t *node, void (*func)(int));
+/* jahsj */
+void is_leaves(const binary_tree_t *tree, size_t *leaves);
 
 
 
@@ -60,4 +62,12 @@ size_t binary_tree_height(const binary_tree_t *tree);
 size_t binary_tree_depth(const binary_tree_t *tree);
 /* size calculator */
 size_t binary_tree_size(const binary_tree_t *tree);
+/* leaves counter */
+size_t binary_tree_leaves(const binary_tree_t *tree);
+size_t binary_tree_nodes(const binary_tree_t *tree);
+int binary_tree_is_full(const binary_tree_t *tree);
+int binary_tree_is_perfect(const binary_tree_t *tree);
+binary_tree_t *binary_tree_sibling(binary_tree_t *node);
+binary_tree_t *binary_tree_uncle(binary_tree_t *node);
+int binary_tree_balance(const binary_tree_t *tree);
 #endif /* _BINARY_TREES_H_ */
