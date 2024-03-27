@@ -31,10 +31,9 @@ void pre_traverse(const binary_tree_t *node, void (*func)(int));
 void in_traverse(const binary_tree_t *node, void (*func)(int));
 /* binary tree post-order traversal recursor */
 void post_traverse(const binary_tree_t *node, void (*func)(int));
-/* height checker */
-size_t height_checker(const binary_tree_t *node);
-/* depth checker */
-void depth_checker(const binary_tree_t *node, size_t *depth);
+
+
+
 
 /** Core Functions **/
 /* binary tree node creator */
@@ -59,4 +58,6 @@ void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int));
 size_t binary_tree_height(const binary_tree_t *tree);
 /* depth calculator */
 size_t binary_tree_depth(const binary_tree_t *tree);
+/* size calculator */
+size_t binary_tree_size(const binary_tree_t *tree);
 #endif /* _BINARY_TREES_H_ */
