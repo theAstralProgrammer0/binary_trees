@@ -1,13 +1,14 @@
 #include "binary_trees.h"
-
 /**
- * binary_tree_nodes - Entry Point
+ * get_nodes - Entry Point
  *
- * Description: measures the nodes of a binary tree
+ * Description: counts the nodes of a binary tree
  *
- * @tree: pointer to the root node of the tree to measure the nodes
+ * @tree: pointer to the root node of the tree to count the nodes
  *
- * Return: (size_t) nodes of the tree, 0 if tree is NULL
+ * @nodes: count of the nodes in the binary tree
+ *
+ * Return: Nothing
  */
 void get_nodes(const binary_tree_t *tree, size_t *nodes)
 {
@@ -33,13 +34,25 @@ void get_nodes(const binary_tree_t *tree, size_t *nodes)
 		is_node = 0;
 
 	if (is_node)
-	       (*nodes)++;	
+		(*nodes)++;
 }
 
 
+/**
+ * binary_tree_nodes - Entry Point
+ *
+ * Description: measures the nodes of a binary tree
+ *
+ * @tree: pointer to the root node of the tree to measure the nodes
+ *
+ * Return: (size_t) nodes of the tree, 0 if tree is NULL
+ */
 size_t binary_tree_nodes(const binary_tree_t *tree)
 {
 	size_t nodes = 0;
+
+	if (!tree)
+		return (0);
 
 	get_nodes(tree, &nodes);
 
