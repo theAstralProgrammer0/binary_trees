@@ -1,13 +1,15 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_leaves - Entry Point
+ * get_leaves - Auxilliary Function
  *
- * Description: measures the leaves of a binary tree
+ * Description: This function counts the leaves on each side of the tree
  *
- * @tree: pointer to the root node of the tree to measure the leaves
+ * @tree: pointer to the root node of the tree to count the number of leaves
  *
- * Return: (size_t) leaves of the tree, 0 if tree is NULL
+ * @leaves: count of the leaf nodes in the binary tree
+ *
+ * Return: Nothing
  */
 void get_leaves(const binary_tree_t *tree, size_t *leaves)
 {
@@ -33,13 +35,25 @@ void get_leaves(const binary_tree_t *tree, size_t *leaves)
 		is_leaf = 1;
 
 	if (is_leaf)
-	       (*leaves)++;	
+		(*leaves)++;
 }
 
 
+/**
+ * binary_tree_leaves - Entry Point
+ *
+ * Description:  counts the leaves in a binary tree
+ *
+ * @tree: pointer to the root node of the tree to count the number of leaves
+ *
+ * Return: (size_t) count of leaves of the tree, 0 if tree is NULL
+ */
 size_t binary_tree_leaves(const binary_tree_t *tree)
 {
 	size_t leaves = 0;
+
+	if (!tree)
+		return (0);
 
 	get_leaves(tree, &leaves);
 
