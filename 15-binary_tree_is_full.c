@@ -1,13 +1,13 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_nodes - Entry Point
+ * is_tree_full - Auxilliary Function
  *
- * Description: measures the nodes of a binary tree
+ * Description: checks if left and right subtrees of a binary tree is full
  *
- * @tree: pointer to the root node of the tree to measure the nodes
+ * @tree: pointer to the root node of the tree to check
  *
- * Return: (size_t) nodes of the tree, 0 if tree is NULL
+ * Return: (int) 1 if full, 0 otherwise
  */
 int is_tree_full(const binary_tree_t *tree)
 {
@@ -24,6 +24,15 @@ int is_tree_full(const binary_tree_t *tree)
 }
 
 
+/**
+ * binary_tree_is_full - Entry Point
+ *
+ * Description: checks if a binary tree is a full binary tree
+ *
+ * @tree: pointer to the root node of the tree to check
+ *
+ * Return: (int) 1 if full, 0 otherwise
+ */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
 	if (!tree)
