@@ -3,26 +3,25 @@
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 				     const binary_tree_t *second)
 {
-	binary_tree_t *first_friend = (binary_tree_t *)first;
-	binary_tree_t *second_friend = (binary_tree_t *)second;
+	binary_tree_t *f = (binary_tree_t *)first;
+	binary_tree_t *s = (binary_tree_t *)second;
 
 	if (!first || !second || !first->parent || !second->parent)
 		return (NULL);
-	if (first->parent == second)
-		return (second_friend);
-	if (second->parent == first)
-		return (first_friend);
+	if (f->parent == s)
+		return (s);
+	if (s->parent == f)
+		return (f);
 
-	while (first_friend)
+	while (f)
 	{
-		second_friend = (binary_tree_t *)second;
-		while (second_friend)
+		while (s)
 		{
-			if (second_friend->parent == first_friend->parent)
-				return (second_friend->parent);
-			second_friend = second_friend->parent;
+			if (s->parent == f->parent)
+				return (s->parent);
+			s = s->parent;
 		}
-		first_friend = first_friend->parent;
+		f = f->parent;
 	}
 	return (NULL);
 }
