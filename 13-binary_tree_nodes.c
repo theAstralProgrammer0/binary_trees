@@ -1,60 +1,78 @@
 #include "binary_trees.h"
+
 /**
- * get_nodes - Entry Point
+ * root_exclusion - Auxilliary Function
  *
- * Description: counts the nodes of a binary tree
+ * Description: measures the size of a binary tree excluding the root
  *
- * @tree: pointer to the root node of the tree to count the nodes
+ * @tree: pointer to the root node of the tree to measure the size
  *
- * @nodes: count of the nodes in the binary tree
- *
- * Return: Nothing
+ * Return: (size_t) size of the tree, 0 if tree is NULL
  */
-void get_nodes(const binary_tree_t *tree, size_t *nodes)
+size_t root_exclusion(const binary_tree_t *tree)
 {
-	size_t is_node = 0;
+	size_t size_l = 0;
+	size_t size_r = 0;
 
 	if (!tree)
-		return;
-
-	if (tree->left)
-	{
-		is_node = 1;
-		get_nodes(tree->left, nodes);
-	}
-	else
-		is_node = 0;
-
-	if (tree->right)
-	{
-		is_node = 1;
-		get_nodes(tree->right, nodes);
-	}
-	else
-		is_node = 0;
-
-	if (is_node)
-		(*nodes)++;
-}
-
-
-/**
- * binary_tree_nodes - Entry Point
- *
- * Description: measures the nodes of a binary tree
- *
- * @tree: pointer to the root node of the tree to measure the nodes
- *
- * Return: (size_t) nodes of the tree, 0 if tree is NULL
- */
-size_t binary_tree_nodes(const binary_tree_t *tree)
-{
-	size_t nodes = 0;
-
-	if (!tree || (!tree->left && !tree->right))
 		return (0);
 
-	get_nodes(tree, &nodes);
+	if (tree->left)
+		size_l = 1 + root_exclusion(tree->left);
+	else
+		size_l = 0;
+	if (tree->right)
+		size_r = 1 + root_exclusion(tree->right);
+	else
+		size_r = 0;
 
-	return (nodes);
+	return (size_r + size_l);
+}
+
+/**
+ * binary_tree_size - Entry Point
+ *
+ * Description: measures the size of a binary tree including root.
+ *
+ * @tree: pointer to the root node of the tree to measure the size
+ *
+ * Return: (size_t) size of the tree, 0 if tree is NULL
+ */
+size_t binary_tree_size(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+	return (1 + root_exclusion(tree));
+}
+
+/**
+ * binary_tree_leaves - Entry Point
+ *
+ * Description:  counts the leaves in a binary tree
+ *
+ * @tree: pointer to the root node of the tree to count the number of leaves
+ *
+ * Return: (size_t) count of leaves of the tree, 0 if tree is NULL
+ */
+size_t binary_tree_leaves(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+
+	if (!tree->left || !tree->right)
+		return (1);
+
+	return (binary_tree_leaves(tree->left) + binary_tree_leaves(tree->right));
+}
+
+size_t binary_tree_nodes(const binary_tree_t *tree)
+{
+	size_t size, leaves;
+
+	if (!tree)
+		return (0);
+
+	size = binary_tree_size(tree);
+	leaves = binary_tree_leaves(tree);
+	return (size - leaves);
 }
