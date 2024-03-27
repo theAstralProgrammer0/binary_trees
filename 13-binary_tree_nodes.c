@@ -30,7 +30,7 @@ size_t root_exclusion(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_size - Entry Point
+ * binary_tree_size - Auxilliary Function
  *
  * Description: measures the size of a binary tree including root.
  *
@@ -46,7 +46,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_leaves - Entry Point
+ * binary_tree_leaves - Auxilliary Function
  *
  * Description:  counts the leaves in a binary tree
  *
@@ -65,6 +65,15 @@ size_t binary_tree_leaves(const binary_tree_t *tree)
 	return (binary_tree_leaves(tree->left) + binary_tree_leaves(tree->right));
 }
 
+/**
+ * binary_tree_nodes - Entry Point
+ *
+ * Description: counts the nodes with at least 1 child in a binary tree
+ *
+ * @tree: pointer to the root node of the tree to count the number of nodes
+ *
+ * Return: (size_t) count of nodes, If tree is NULL, 0
+ */
 size_t binary_tree_nodes(const binary_tree_t *tree)
 {
 	size_t size, leaves;
