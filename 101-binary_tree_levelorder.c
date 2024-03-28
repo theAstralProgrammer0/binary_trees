@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_height - Entry Point
+ * binary_tree_height - Auxilliary Function
  *
  * Description: measures the height of a binary tree
  *
@@ -30,11 +30,20 @@ size_t binary_tree_height(const binary_tree_t *tree)
 }
 
 /**
- * we print the n member of the nodes at this level
+ * level_print - Auxilliary Function
+ *
+ * Description: we print the n member of the nodes at a certain level
+ *
+ * @root: pointer to root of tree or subtree at a certain level
+ *
+ * @level: level of tree or subtree to be printed
+ *
+ * @func: function pointer to print the n member of the root
+ *
+ * Return: Nothing
  */
 void level_print(const binary_tree_t *root, int level, void (*func)(int))
 {
-	
 	if (level == 0)
 		func(root->n);
 
@@ -46,7 +55,15 @@ void level_print(const binary_tree_t *root, int level, void (*func)(int))
 }
 
 /**
- * we set the level to be printed
+ * level_setter - Auxilliary Function
+ *
+ * Description: we set the level to be printed
+ *
+ * @tree: pointer to the root of the tree or subtree to be printed
+ *
+ * @func: function pointer to print the n member of the root
+ *
+ * Return: Nothing
  */
 void level_setter(const binary_tree_t *tree, void (*func)(int))
 {
@@ -58,12 +75,21 @@ void level_setter(const binary_tree_t *tree, void (*func)(int))
 }
 
 /**
- * driver function to print at all levels
+ * binary_tree_levelorder - Driver Function
+ *
+ * Description: a function that goes through a binary tree using level-order
+ * traversal. Driver function to print at all levels
+ *
+ * @tree: pointer to the root node of the tree to traverse
+ *
+ * @func: pointer to a function to call for each node.
+ * The value in the node must be passed as a parameter to this function.
+ *
+ * Return: Nothing
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
 	if (!tree || !func)
 		return;
-
 	level_setter(tree, func);
 }
